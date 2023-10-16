@@ -46,8 +46,6 @@ public class HoneywellScannerNative extends HoneywellScanner implements AidcMana
             supported = true;
             scannerManager = aidcManager;
             scanner = scannerManager.createBarcodeReader();
-            // register bar code event listener
-            scanner.addBarcodeListener(this);
 
             // set the trigger mode to client control
             try {
@@ -57,6 +55,8 @@ public class HoneywellScannerNative extends HoneywellScanner implements AidcMana
             } catch (UnsupportedPropertyException e) {
                 onError(e);
             }
+            // register bar code event listener
+            scanner.addBarcodeListener(this);
             // register trigger state change listener
             // When using Automatic Trigger control do not need to implement the onTriggerEvent
             scanner.addTriggerListener(this);
